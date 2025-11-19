@@ -97,6 +97,7 @@ app.listen(PORT, () => {
     console.log(`Szerver fut: http://localhost:${PORT}`);
 });
 
+<<<<<<< HEAD
 // Kapcsolat űrlap megjelenítése
 app.get('/kapcsolat', (req, res) => {
     res.render('kapcsolat');
@@ -113,3 +114,5 @@ app.post('/kapcsolat', (req, res) => {
         res.send("Üzenet sikeresen elküldve!");
     });
 });
+=======
+>>>>>>> 85491ddf14d1a93e85f62d0d8875d28e1c3a70a0
