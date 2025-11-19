@@ -97,3 +97,19 @@ app.listen(PORT, () => {
     console.log(`Szerver fut: http://localhost:${PORT}`);
 });
 
+// Kapcsolat űrlap megjelenítése
+app.get('/kapcsolat', (req, res) => {
+    res.render('kapcsolat');
+});
+
+// Kapcsolat POST
+app.post('/kapcsolat', (req, res) => {
+    const { nev, email, uzenet } = req.body;
+
+    const sql = "INSERT INTO kapcsolat (nev, email, uzenet, kuldve) VALUES (?, ?, ?, NOW())";
+
+    db.query(sql, [nev, email, uzenet], (err) => {
+        if (err) throw err;
+        res.send("Üzenet sikeresen elküldve!");
+    });
+});
