@@ -1,0 +1,986 @@
+/*=======================================================================================================================================
+								N.Y. Pizza HTML website template  // Template design by SimplyBestWebsites.Com	
+ =======================================================================================================================================*/
+
+/* ============ Global elements ============ */ 
+body {
+  height: 100%;
+  background-color: #ededed;
+  font-family: Merriweather, sans-serif;
+  color: #333;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 300;
+}
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 700;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 35px;
+  line-height: 42px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #d81313;
+  font-size: 23px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+
+.h3-about {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: #d81313;
+  font-size: 23px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.h4-light {
+  margin-bottom: 6px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #eee;
+  color: #999;
+}
+
+.h4-contact {
+  margin-top: 25px;
+  margin-bottom: 6px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #999;  
+  color: #d81313;
+}
+
+h5 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 0px;
+  color: #555;
+}
+
+.paragraph {
+  font-family: Merriweather, serif;
+}
+
+a {
+  display: inline-block;
+  border-bottom: 2px solid rgba(51, 51, 51, .4);
+  -webkit-transition: border 200ms ease;
+  transition: border 200ms ease;
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom-color: #cf000f;
+  color: #cf000f;
+  text-decoration: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+
+/* ============ Red top information bar ============ */
+
+.top-info-section { 
+ background-color: #cf000f;
+}
+
+.top-info-info-text {
+  border-color: #fff;
+  font-family: 'oswald';
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.top-info-info-column-first {
+  border-left: 1px solid #fff;  
+  border-right: 1px solid #fff;    
+}
+
+.top-info-info-column-center {
+  border-right: 1px solid #fff;  
+}
+
+.top-info-info-column-last {
+  border-right: 1px solid #fff;  
+}
+
+/* ============ Header settings ============ */
+
+.header {
+  position: relative;
+  background-color: rgba(0, 0, 0, .97);
+  background-image: -webkit-linear-gradient(270deg, #fff, #fff);
+  background-image: linear-gradient(180deg, #fff, #fff);
+}
+
+/* ============ Main navigational links ============ */
+
+.nav-menu {
+  float: left;
+}
+
+.navbar {
+  position: relative;
+  background:rgba(51,51,51,0.95)
+}
+
+.main-link {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom-style: none;
+  -webkit-transition-property: color;
+  transition-property: color;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.main-link:hover {
+  color: #cf000f;
+}
+
+/* ============ Button properties for contact & catering form links ============ */
+
+.main-link.button.submit {
+  margin-left: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-style: none;
+  border-width: 0px;
+  background-color: #cf000f;
+  color: #fff;
+}
+
+.main-link.button.submit:hover {
+ background-color: #666; 
+}
+
+/* ============ Logo settings ============ */
+
+.brand {
+  margin-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom-style: none;
+  font-family: Oswald, sans-serif;
+  -webkit-transition-property: color;
+  transition-property: color;
+  color: #d81313;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 6px #b6a0a0;
+} 
+
+/* ============ Page content container settings ============ */
+
+.container {
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+}
+.article {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+/* ============ Slideshow ============ */
+
+.slider {
+  position: relative;
+  z-index: 2;
+  height: 500px; 
+  width: 100%;
+}
+
+.slider-arrow {
+  position: absolute;
+  left: auto;
+  top: auto;
+  right: 0px;
+  bottom: 0px;
+  width: 50px;
+  height: 50px;
+  background-color: hsla(0, 0%, 100%, .09);
+  -webkit-transition: color 200ms ease, background-color 200ms ease;
+  transition: color 200ms ease, background-color 200ms ease;
+  color: #fff;
+  font-size: 20px;
+}
+
+.slider-arrow:hover {
+  background-color: #fff;
+  color: #cf000f;
+}
+
+.slider-arrow.left {
+  margin-right: 50px;
+}
+
+.slider-nav {
+  position: absolute;
+  left: 0px;
+  top: auto;
+  right: auto;
+  bottom: 0px;
+  display: inline-block;
+  padding-top: 0px;
+  padding-left: 38px;
+}
+
+.slide1 {
+  padding: 40px;
+  background-image: url('../images/slides/slide-pizza.png');
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.slide2 {
+  padding: 40px;
+  background-image: url('../images/slides/slide-pasta.png');
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.slide3 {
+  padding: 40px;
+  background-image: url('../images/slides/slide-beer.png');
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.hero-line {
+  padding-top: 100px;
+  display: block;
+  font-family: Vollkorn, serif;
+  color: #cf000f;
+  text-shadow: 0 -1px 0 hsla(0, 0%, 100%, .25), 1px 1px 6px #999;
+}
+
+.mask {
+  background-image: -webkit-linear-gradient(90deg, #000, #fff);
+  background-image: linear-gradient(0deg, #000, #fff);
+}
+
+.slider-btn {
+  margin-left: 0px;
+  padding-left: 25px;
+  border-color: #333;
+  background-color: #ee2828;
+  box-shadow: 0 0 6px 0 #666;
+  color: #fff;
+  font-weight: 400;
+}
+
+/* ============ Page sections ============ */
+
+.section {
+  padding: 5px 30px;
+}
+
+.section-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.section-hero.title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-image: url('../images/bg.png');
+  background-position: 0px 0px;
+  background-size: cover;
+  color: #fff;
+}
+
+.hero-sub-title {
+  font-family: Varela, sans-serif;
+  color: hsla(0, 0%, 100%, .49);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.section-half-block {
+  position: relative;
+  min-height: 450px;
+  background-color: #fff;
+}
+
+/* ============ Margin settings ============ */
+
+.bottom-margin-small {
+  margin-bottom: 10px;
+  font-family: Oswald, sans-serif;
+}
+
+.bottom-margin-medium {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-family: 'Vollkorn', sans-serif;
+}
+
+.bottom-margin-large {
+  margin-bottom: 60px;
+}
+
+/* ============ Rows & columns settings ============ */
+
+.row {
+  display: block;
+}
+
+.col.padding {
+  padding-right: 30px;
+  font-family: Lato, sans-serif;
+}
+
+/* ============ Content holder blocks ============ */
+
+.block-main-holder {
+  height: auto;
+  margin-left: -10px;
+  padding: 90px 60px;
+}
+
+.block-main-holder {
+  height: auto;
+  margin-left: -10px;
+  padding: 90px 60px;
+}
+
+.block-main-holder.left {
+  margin-right: -10px;
+  margin-left: 0px;
+  padding-left: 0px;
+  text-align: left;
+}
+
+.block-main-row {
+  position: relative;
+}
+
+.half-block-main {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: auto;
+  bottom: 0px;
+  z-index: 5;
+  width: 50%;
+  height: 100%;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.half-block-main.right {
+  left: auto;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.half-block-main.right.home-1 {
+  background-image: url('../images/pizza-home.png'); /* 1st image in the content section of the home-page */
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.half-block-main.home-2 {
+  background-image: url('../images/spaghetti-home.png'); /* 2nd image in the content section of the home-page */
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.half-block-main.home-3 {
+  background-image: url('../images/catering.png'); /* 3rd image in the content section of the home-page */
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.half-block-main.home-4 {
+  background-image: url('../images/beer-home.png'); /* 4th image in the content section of the home-page */
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.three-block-holder-single {
+  -webkit-transition: box-shadow 200ms ease;
+  transition: box-shadow 200ms ease;
+}
+
+.three-block-holder-single:hover {
+  border-bottom-color: #111;
+  box-shadow: 0 0 21px 0 rgba(0, 0, 0, .1);
+}
+
+.three-block-content-single {
+  margin-bottom: 0px;
+  padding: 30px;
+  background-color: #fff;
+  text-align: left;
+}
+
+.three-block-content-single.half {
+  padding: 5px;
+}
+
+.three-block-content-image {
+  margin: 0px;
+  background-color: #cf000f;
+}
+
+/* ============ Footer section ============ */
+
+.footer-nav-section {
+  padding: 5px 30px;
+  background-color: #000;
+}
+
+.footer-copyright-section {
+  padding: 0px 30px;
+  background-color: #cf000f;
+  font-family: Roboto, sans-serif;
+  font-size: 13px; 
+  color: #fff;  
+}
+
+/* ============ White links used in the footer section ============ */
+
+.white-link {
+  border-bottom-color: hsla(0, 0%, 100%, .2);
+  color: #fff;
+}
+
+.white-link:hover {
+  border-bottom-color: #fff;
+  color: #fff;
+}
+
+.white-link.uppercase {
+  margin-right: 20px;
+  font-family: Oswald, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* ============ Social media icons in the footer section ============ */
+
+.social-icon {
+  width: 30px;
+  margin-left: 5px;
+  border-bottom-style: none;
+  opacity: 0.7;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.social-icon:hover {
+  opacity: 1;
+}
+
+.social-icon.right {
+  margin-right: 3px;
+  margin-left: 0px;
+  opacity: 0.5;
+}
+
+.social-icon.right:hover {
+  opacity: 1;
+}
+
+/* ============ Call to action section ============ */
+
+.call-to-action {
+  position: relative;
+  display: block;
+  padding: 15px 30px;
+  border-bottom-style: none;
+  background-color: #fff;
+  background-image: url('../images/bg.png');  
+  -webkit-transition: color 200ms ease, background-color 200ms ease;
+  transition: color 200ms ease, background-color 200ms ease;  
+  font-family: Roboto, sans-serif;
+  /*font-weight: 200;*/
+  color: #ffffff;  
+  border-top: 2px solid #eee;  	
+}
+
+.link-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============ Menu section ============ */
+
+.image-holder {		
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.menu-title-bg {	
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: -5px;
+  padding: 7px 10px 7px 30px;
+  background-color: #ffebee;
+  color: #cf000f;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 700;
+}
+
+/* ============ Settings for form input fields ============ */
+
+.input {
+  height: 50px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+  -webkit-transition: border 200ms ease;
+  transition: border 200ms ease;
+}
+
+.input:hover {
+  border-color: #ccc;
+}
+
+.input:active {
+  border-color: #cf000f;
+}
+
+.input:focus {
+  border-color: #cf000f;
+}
+
+.input.message {
+  height: 200px;
+}
+
+/* ============ Map settings ============ */
+
+.map-holder {
+  background-color: #fff;
+}
+
+.map {
+  opacity: 0.9;
+}
+
+/* ============ Media settings at max 991px ============ */
+
+@media (max-width: 991px) {
+  .main-link {
+    margin-left: 0px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .main-link:hover {
+    color: #fff;
+  }
+  .main-link.button {
+    display: inline-block;
+    margin-left: 15px;
+  }
+  .nav-menu {
+    width: auto;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 10px;
+    background-color: #cf000f;
+    box-shadow: 0 11px 41px -7px rgba(0, 0, 0, .3);
+  }
+  .brand {
+    width: auto;
+    padding-top: 12px;
+    padding-bottom: 9px;
+    line-height: 21px;
+  }
+  .container.content {
+    margin-bottom: 40px;
+  }
+  .menu-button {
+    margin-right: 10px;
+    padding: 8px 0px 5px;
+    float: left;
+    border-radius: 3px;
+    color: #777;
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .menu-button:hover {
+    color: #333;
+  }
+  .menu-button.w--open {
+    background-color: transparent;
+    color: #333;
+  }
+  .menu-icon {
+    background-color: #eee;
+  }
+  .section-hero {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .section-hero.title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .section-hero.full-width {
+    background-attachment: scroll;
+  }
+  .slider-nav {
+    padding-left: 32px;
+  }
+  .hero-slide-title {
+    max-width: 95%;
+  }
+  .bottom-margin-medium {
+    margin-bottom: 20px;
+  }
+  .slide {
+    padding: 30px;
+  }
+  .hero-line {
+    display: inline;
+  }
+  .section---white-holder {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .section-half-block {
+    min-height: 0px;
+  }
+  .block-main-holder {
+    margin-right: -20px;
+    padding: 30px;
+  }
+  .block-main-holder.left {
+    margin-right: -10px;
+    margin-left: -20px;
+    padding-left: 30px;
+  }
+  .section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .section.food {
+    padding-bottom: 10px;
+  }
+  .three-block-content-single {
+    padding: 20px;
+  }
+  .footer-nav-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .full-spread-image {
+    margin-right: -30px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+  }
+  .content {
+    margin-bottom: 40px;
+  }
+
+  .work-title-holder {
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 30px;
+  }
+  .menu-title-bg {
+    margin-left: -20px;
+    padding-left: 20px;
+  }
+}
+
+/* ============ Media settings at max 767px ============ */
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 40px;
+    line-height: 45px;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  .brand {
+    padding-left: 0px;
+  }
+  .container.content {
+    margin-bottom: 20px;
+  }
+  .menu-button {
+    position: relative;
+    z-index: 2;
+  }
+  .slider-nav {
+    padding-left: 20px;
+  }
+  .hero-slide-title {
+    max-width: 90%;
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .slide {
+    padding: 20px;
+  }
+  .slider-background {
+    width: 150%;
+  }
+  .col {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .col.padding {
+    margin-bottom: 20px;
+    padding-right: 0px;
+  }
+  .row {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .section-half-block {
+    background-color: #fff;
+  }
+  .block-main-holder {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 30px;
+  }
+  .block-main-holder.left {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 30px;
+    text-align: left;
+  }
+  .half-block-main {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 300px;
+  }
+  .three-block-holder-single {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background-color: #fff;
+    text-align: center;
+  }
+  .three-block-holder-single.no-bottom-margin {
+    margin-bottom: 0px;
+  }
+  .three-block-content-single.switch {
+    float: left;
+  }
+  .three-block-content-single.bottom-margin-medium.half {
+    float: right;
+  }
+  .three-block-content-single.half {
+    width: 50%;
+    float: left;
+  }
+  .three-block-content-image {
+    width: 50%;
+    float: left;
+  }
+  .three-block-content-image.switch {
+    float: right;
+  }
+  .quote-holder {
+    padding-top: 60px;
+    padding-left: 0px;
+    background-position: 0px 0px;
+    background-size: 55px;
+  }
+  .align-right.social {
+    text-align: left;
+  }
+  .social-icon {
+    margin-right: 5px;
+    margin-left: 0px;
+  }
+  .footer-nav-section {
+    padding: 30px;
+  }
+  .footer-nav-holder {
+    margin-bottom: 20px;
+  }
+  .full-spread-image {
+    margin-bottom: 40px;
+  }
+  .content {
+    margin-bottom: 20px;
+  }
+  .dark-grey.inline-to-block {
+    display: block;
+  }
+  .work-title-holder {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 20px;
+  }
+  .down-arrow {
+    width: 30px;
+  }
+  .image-holder {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 50%;
+    bottom: 0px;
+    padding-bottom: 0%;
+    float: left;
+  }
+}
+
+/* ============ Media settings at max 479px ============ */
+
+@media (max-width: 479px) {
+  .main-link.button {
+    width: 49%;
+    margin-right: 1%;
+    margin-left: 0px;
+  }
+  .main-link.button.alternate {
+    width: 49%;
+    margin-right: 0%;
+    margin-left: 1%;
+  }
+  .nav-menu {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .brand {
+    display: block;
+    float: none;
+  }
+  .navbar {
+    padding: 20px;
+  }
+  .header-button-list {
+    margin-top: 15px;
+    float: none;
+    clear: both;
+  }
+  .container.content {
+    margin-bottom: 20px;
+  }
+  .section-hero {
+    padding: 20px;
+  }
+  .slider-nav {
+    padding-top: 5px;
+  }
+  .hero-slide-title {
+    max-width: 95%;
+  }
+  .section---white-holder {
+    padding: 20px;
+  }
+  .block-main-holder {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .half-block-main {
+    height: 200px;
+  }
+  .section {
+    padding: 20px;
+  }
+  .three-block-holder-single {
+    margin-bottom: 20px;
+  }
+  .three-block-content-single {
+    width: auto;
+    float: none;
+  }
+  .three-block-content-single.half {
+    width: 100%;
+    float: none;
+  }
+  .three-block-content-image {
+    width: auto;
+    float: none;
+  }
+  .quote-holder {
+    background-size: 50px;
+  }
+  .white-link.uppercase {
+    display: block;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    padding-bottom: 4px;
+  }
+  .footer-nav-section {
+    padding: 20px;
+  }
+  .footer-copyright-section {
+    padding: 20px;
+  }
+  .full-spread-image {
+    margin-right: -20px;
+    margin-bottom: 30px;
+    margin-left: -20px;
+  }
+
+  .image-holder {
+    position: static;
+    padding-bottom: 88%;
+    float: none;
+  }
+}

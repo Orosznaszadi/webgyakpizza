@@ -1,13 +1,26 @@
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
 const session = require('express-session');
 const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
 
-// Template engine
+
+// EJS beállítás
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// express-ejs-layouts használata
+app.use(expressLayouts);
+
+// statikus mappa
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Template engine
 
 // Form data
 app.use(express.urlencoded({ extended: true }));
@@ -19,12 +32,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+
+
 // MySQL kapcsolat
 const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'studb151',
-    password: 'Studb151#2024',
-    database: 'db151'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Teszt kapcsolat
@@ -33,13 +53,15 @@ db.connect((err) => {
     console.log("MySQL kapcsolat sikeres!");
 });
 
+
+
 // Főoldal
 app.get('/', (req, res) => {
-    res.send("A szerver működik 👍");
+    res.render('pages/home');
 });
 
 // --- REGISZTRÁCIÓ ---
-app.post('/regisztracio', (req, res) => {
+app.post('/register', (req, res) => {
     const { felhasznalo, jelszo } = req.body;
 
     const hash = bcrypt.hashSync(jelszo, 10);
@@ -53,8 +75,27 @@ app.post('/regisztracio', (req, res) => {
     );
 });
 
+
+
+// --- KIJELENTKEZÉS ---
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) return res.send("Hiba kijelentkezéskor: " + err);
+       // res.send("Sikeresen kijelentkeztél! <a href='/bejelentkezes'>Bejelentkezés</a>");
+        res.redirect("/");
+    });
+});
+
+// --- OLDALAK ---
+app.get('/register', (req, res) => {
+    res.render('pages/regisztracio');
+});
+
+app.get('/login', (req, res) => {
+    res.render('pages/bejelentkezes');
+});
 // --- BEJELENTKEZÉS ---
-app.post('/bejelentkezes', (req, res) => {
+app.post('/login', (req, res) => {
     const { felhasznalo, jelszo } = req.body;
 
     db.query('SELECT * FROM users WHERE username = ?', [felhasznalo], (err, eredmeny) => {
@@ -71,48 +112,38 @@ app.post('/bejelentkezes', (req, res) => {
         }
 
         req.session.user = user;
-        res.send("Sikeres bejelentkezés!");
+        res.redirect("/");
+
+
+
     });
 });
 
-// --- KIJELENTKEZÉS ---
-app.get('/kijelentkezes', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) return res.send("Hiba kijelentkezéskor: " + err);
-        res.send("Sikeresen kijelentkeztél! <a href='/bejelentkezes'>Bejelentkezés</a>");
-    });
-});
-
-// --- OLDALAK ---
-app.get('/regisztracio', (req, res) => {
-    res.render('regisztracio');
-});
-
-app.get('/bejelentkezes', (req, res) => {
-    res.render('bejelentkezes');
-});
 
 // Start
 app.listen(PORT, () => {
     console.log(`Szerver fut: http://localhost:${PORT}`);
 });
 
-<<<<<<< HEAD
+
 // Kapcsolat űrlap megjelenítése
 app.get('/kapcsolat', (req, res) => {
-    res.render('kapcsolat');
+    res.render('pages/kapcsolat', { successMessage: null });
+});
+
+
+app.get('/menu', (req, res) => {
+    res.render('pages/menu', { successMessage: null });
 });
 
 // Kapcsolat POST
 app.post('/kapcsolat', (req, res) => {
     const { nev, email, uzenet } = req.body;
 
-    const sql = "INSERT INTO kapcsolat (nev, email, uzenet, kuldve) VALUES (?, ?, ?, NOW())";
+    const sql = "INSERT INTO contacts (name, email, message, created_at) VALUES (?, ?, ?, NOW())";
 
     db.query(sql, [nev, email, uzenet], (err) => {
         if (err) throw err;
         res.send("Üzenet sikeresen elküldve!");
     });
 });
-=======
->>>>>>> 85491ddf14d1a93e85f62d0d8875d28e1c3a70a0

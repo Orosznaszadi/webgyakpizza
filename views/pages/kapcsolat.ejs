@@ -1,0 +1,64 @@
+
+<!-- Hero szekció -->
+<section class="section-hero title">
+    <div class="container w-container" style="text-align:center;">
+        <h1 class="bottom-margin-extra-small" style="color:white; text-shadow:2px 2px 4px rgba(0,0,0,0.4);">
+            Kapcsolat
+        </h1>
+        <h3 class="hero-sub-title" style="color:white;">
+            Írj nekünk bátran! Minden üzenetre válaszolunk.
+        </h3>
+    </div>
+</section>
+
+<!-- Kapcsolat form szekció -->
+<section class="section-half-block" style="background-color:#f9f9f9; padding:60px 0;">
+    <div class="w-container" style="max-width:700px;">
+        <% if (successMessage) { %>
+            <div style="background-color:#28a745; color:white; padding:12px; border-radius:6px; margin-bottom:20px;">
+                <%= successMessage %>
+            </div>
+        <% } %>
+
+        <div class="block-main-holder" style="background:white; padding:40px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.1);">
+            <form action="/kapcsolat" method="POST" class="w-form">
+                <label for="name" style="font-weight:bold;">Név:</label>
+                <input type="text" id="name" name="nev" class="w-input"
+                       style="width:100%; margin-bottom:20px; padding:10px; border:1px solid #ccc; border-radius:5px;" required>
+
+                <label for="email" style="font-weight:bold;">Email:</label>
+                <input type="email" id="email" name="email" class="w-input"
+                       style="width:100%; margin-bottom:20px; padding:10px; border:1px solid #ccc; border-radius:5px;" required>
+
+                <label for="message" style="font-weight:bold;">Üzenet:</label>
+                <textarea id="message" name="uzenet" rows="5" class="w-input"
+                          style="width:100%; margin-bottom:25px; padding:10px; border:1px solid #ccc; border-radius:5px;" required></textarea>
+
+                <button type="submit" class="slider-btn w-button"
+                        style="background-color:#d32f2f; color:white; font-weight:bold; font-size:16px; padding:12px 30px; border:none; border-radius:5px; cursor:pointer;">
+                    Küldés
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Extra blokk a hangulat kedvéért -->
+<div class="section-half-block">
+    <div class="half-block-main home-3 right"></div>
+    <div class="w-container">
+        <div class="block-main-row w-row">
+            <div class="col w-col w-col-6">
+                <article class="block-main-holder left">
+                    <h2 class="bottom-margin-medium">Elérhetőségeink</h2>
+                    <p style="text-align:justify;">
+                        1234 Budapest, Pizza u. 123.<br>
+                        Telefon: (123) 456-7890<br>
+                        Email: info@pizzamester.hu
+                    </p>
+                    <a class="bottom-margin-small small-text" href="/">VISSZA A FŐOLDALRA&nbsp;→</a>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
