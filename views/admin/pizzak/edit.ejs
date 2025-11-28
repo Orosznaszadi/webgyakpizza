@@ -1,0 +1,25 @@
+<h1>Pizza szerkesztése</h1>
+
+<form action="/admin/pizzak/update/<%= pizza.id %>" method="POST">
+
+    <label>Név:</label><br>
+    <input type="text" name="name" value="<%= pizza.name %>" required><br><br>
+
+    <label>Kategória:</label><br>
+    <select name="kategoria_id">
+        <% kategoriak.forEach(k => { %>
+            <option value="<%= k.id %>"
+                <%= pizza.kategoria_id == k.id ? "selected" : "" %>>
+                <%= k.nev %>
+            </option>
+        <% }) %>
+    </select><br><br>
+
+    <label>Vegetáriánus:</label>
+    <input type="checkbox" name="vegetarian"
+        <%= pizza.vegetarian ? "checked" : "" %>><br><br>
+
+    <button type="submit">Mentés</button>
+</form>
+
+<a href="/admin/pizzak">Vissza</a>

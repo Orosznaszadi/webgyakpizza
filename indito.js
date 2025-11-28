@@ -180,6 +180,89 @@ app.get('/admin/messages', (req, res) => {
         res.render('admin/messages', { messages: results });
     });
 });
+// --- ADMIN: PIZZÁK LISTÁZÁSA ---
+app.get('/admin/pizzak', (req, res) => {
+    const sql = `
+        SELECT p.*, k.nev AS kat_nev
+        FROM pizzas p
+        LEFT JOIN kategoria k ON p.kategoria_id = k.id
+        ORDER BY p.id DESC
+    `;
+
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+
+        res.render('admin/pizzak/index', { pizzak: results });
+    });
+});
+// --- ADMIN: ÚJ PIZZA ŰRLAP ---
+app.get('/admin/pizzak/create', (req, res) => {
+    db.query("SELECT * FROM kategoria", (err, kategoriak) => {
+        if (err) throw err;
+
+        res.render('admin/pizzak/create', { kategoriak });
+    });
+});
+// --- ADMIN: ÚJ PIZZA MENTÉSE ---
+app.post('/admin/pizzak', (req, res) => {
+    const { name, kategoria_id } = req.body;
+    const vegetarian = req.body.vegetarian ? 1 : 0;
+
+    const sql = `
+        INSERT INTO pizzas (name, kategoria_id, vegetarian, created_at)
+        VALUES (?, ?, ?, NOW())
+    `;
+
+    db.query(sql, [name, kategoria_id, vegetarian], (err) => {
+        if (err) throw err;
+
+        res.redirect('/admin/pizzak');
+    });
+});
+// --- ADMIN: PIZZA SZERKESZTÉSE ---
+app.get('/admin/pizzak/edit/:id', (req, res) => {
+    const id = req.params.id;
+
+    db.query("SELECT * FROM pizzas WHERE id = ?", [id], (err, pizzak) => {
+        if (err) throw err;
+
+        const pizza = pizzak[0];
+
+        db.query("SELECT * FROM kategoria", (err2, kategoriak) => {
+            if (err2) throw err2;
+
+            res.render('admin/pizzak/edit', { pizza, kategoriak });
+        });
+    });
+});
+// --- ADMIN: PIZZA FRISSÍTÉSE ---
+app.post('/admin/pizzak/update/:id', (req, res) => {
+    const id = req.params.id;
+    const { name, kategoria_id } = req.body;
+    const vegetarian = req.body.vegetarian ? 1 : 0;
+
+    const sql = `
+        UPDATE pizzas
+        SET name = ?, kategoria_id = ?, vegetarian = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [name, kategoria_id, vegetarian, id], (err) => {
+        if (err) throw err;
+
+        res.redirect('/admin/pizzak');
+    });
+});
+// --- ADMIN: PIZZA TÖRLÉSE ---
+app.get('/admin/pizzak/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    db.query("DELETE FROM pizzas WHERE id = ?", [id], (err) => {
+        if (err) throw err;
+
+        res.redirect('/admin/pizzak');
+    });
+});
 
 // --- SERVER INDÍTÁS ---
 app.listen(PORT, () => {

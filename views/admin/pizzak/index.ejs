@@ -1,0 +1,51 @@
+<div class="section">
+    <div class="container w-container">
+
+        <h1>Pizzák listája</h1>
+
+        <p style="margin-bottom: 20px;">
+            <a href="/admin/pizzak/create" style="font-weight: bold; color: #d70000;">
+                Új pizza hozzáadása
+            </a>
+        </p>
+
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
+            <thead>
+                <tr style="background: #eee; text-align: left;">
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">ID</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Név</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Kategória</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Vegetáriánus?</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Műveletek</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% pizzak.forEach(pizza => { %>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= pizza.id %></td>
+
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                        <%= pizza.name %>
+                    </td>
+
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                        <%= pizza.kat_nev ? pizza.kat_nev : 'Nincs' %>
+                    </td>
+
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                        <%= pizza.vegetarian ? 'Igen' : 'Nem' %>
+                    </td>
+
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                        <a href="/admin/pizzak/edit/<%= pizza.id %>" style="color: #000; font-weight: bold;">Szerkesztés</a>
+                        |
+                        <a href="/admin/pizzak/delete/<%= pizza.id %>" style="color: red; font-weight: bold;">Törlés</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+</div>
