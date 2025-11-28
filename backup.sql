@@ -116,6 +116,18 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
 (1, 'szabolcs', '$2b$10$5oTBx9an/6hfHxWJBsuLMeO4qzurnhpLhydd/53gNeVQJhG/hHgJS', 'registered'),
 (2, 'kriszta', '$2b$10$WURKSzxNGUXOUngHxIeEC.nY7n3OTlX8msNCtRWp4bxDvLhguO03G', 'admin');
 
+
+
+CREATE TABLE `contacts` (
+                            `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+                            `name` varchar(255) NOT NULL,
+                            `email` varchar(255) NOT NULL,
+                            `message` text NOT NULL,
+                            `created_at` timestamp NULL DEFAULT NULL,
+                            `updated_at` timestamp NULL DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --

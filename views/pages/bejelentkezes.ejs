@@ -1,20 +1,21 @@
-
 <div class="section">
     <div class="container w-container">
+        <h1>Bejelentkezés</h1>
 
+        <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <div class="alert alert-danger"><%= errorMessage %></div>
+        <% } %>
 
-    <h1>Bejelentkezés</h1>
+        <form action="/login" method="POST">
+            <label>Felhasználónév:</label><br>
+            <input type="text" name="felhasznalo" required><br><br>
 
-    <form action="/login" method="POST">
-        <label>Felhasználónév:</label><br>
-        <input type="text" name="felhasznalo" required><br><br>
+            <label>Jelszó:</label><br>
+            <input type="password" name="jelszo" required><br><br>
 
-        <label>Jelszó:</label><br>
-        <input type="password" name="jelszo" required><br><br>
+            <button type="submit">Belépés</button>
+        </form>
 
-        <button type="submit">Belépés</button>
-    </form>
-
-    <a href="/regisztracio">Regisztráció</a>
+        <a href="/register">Regisztráció</a>
     </div>
 </div>

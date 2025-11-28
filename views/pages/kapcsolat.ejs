@@ -15,9 +15,11 @@
 <section class="section-half-block" style="background-color:#f9f9f9; padding:60px 0;">
     <div class="w-container" style="max-width:700px;">
         <% if (successMessage) { %>
-            <div style="background-color:#28a745; color:white; padding:12px; border-radius:6px; margin-bottom:20px;">
-                <%= successMessage %>
-            </div>
+            <div class="alert alert-success"><%= successMessage %></div>
+        <% } %>
+
+        <% if (errorMessage) { %>
+            <div class="alert alert-danger"><%= errorMessage %></div>
         <% } %>
 
         <div class="block-main-holder" style="background:white; padding:40px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.1);">
