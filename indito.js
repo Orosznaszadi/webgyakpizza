@@ -182,7 +182,7 @@ app.post('/kapcsolat', (req, res) => {
 
 
 // Üzenetek
-app.get('admin/messages', (req, res) => {
+app.get('/admin/messages', (req, res) => {
     db.query('SELECT * FROM contacts ORDER BY created_at DESC', (err, results) => {
         if (err) throw err;
         res.render('admin/messages', { messages: results });
