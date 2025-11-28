@@ -9,21 +9,16 @@ require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
-
 // EJS beállítás
-app.set('layout', 'layout');  // ha a layoutod views/layouts/main.ejs
+app.set('layout', 'layout');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// express-ejs-layouts használata
 app.use(expressLayouts);
 
 // statikus mappa
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Template engine
-
-// Form data
+// form adat
 app.use(express.urlencoded({ extended: true }));
 
 // Session
@@ -40,8 +35,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 // MySQL kapcsolat
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -50,15 +43,12 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-// Teszt kapcsolat
 db.connect((err) => {
     if (err) throw err;
     console.log("MySQL kapcsolat sikeres!");
 });
 
-
-
-// Főoldal
+// FŐOLDAL
 app.get('/', (req, res) => {
     res.render('pages/home');
 });
@@ -66,45 +56,50 @@ app.get('/', (req, res) => {
 // --- REGISZTRÁCIÓ ---
 app.post('/register', (req, res) => {
     const { felhasznalo, jelszo } = req.body;
-
     const hash = bcrypt.hashSync(jelszo, 10);
 
-    db.query('INSERT INTO users (username, password) VALUES (?, ?)',
+    db.query(
+        'INSERT INTO users (username, password) VALUES (?, ?)',
         [felhasznalo, hash],
         (err) => {
-            if (err) return res.send("Hiba: " + err);
-            res.send("Sikeres regisztráció! <a href='/login'>Bejelentkezés</a>");
+            if (err) {
+                return res.render('pages/regisztracio', {
+                    successMessage: null,
+                    errorMessage: "Hiba történt a regisztráció során."
+                });
+            }
 
+            return res.render('pages/regisztracio', {
+                successMessage: "Sikeres regisztráció!",
+                errorMessage: null
+            });
         }
     );
 });
-
-
 
 // --- KIJELENTKEZÉS ---
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) return res.send("Hiba kijelentkezéskor: " + err);
-       // res.send("Sikeresen kijelentkeztél! <a href='/bejelentkezes'>Bejelentkezés</a>");
         res.redirect("/");
     });
 });
 
-// --- OLDALAK ---
+// OLDALAK
 app.get('/register', (req, res) => {
-    res.render('pages/regisztracio');
+    res.render('pages/regisztracio', { successMessage: null, errorMessage: null });
 });
 
 app.get('/login', (req, res) => {
-    res.render('pages/bejelentkezes');
+    res.render('pages/bejelentkezes', { errorMessage: null });
 });
-
 
 // --- BEJELENTKEZÉS ---
 app.post('/login', (req, res) => {
     const { felhasznalo, jelszo } = req.body;
 
     db.query('SELECT * FROM users WHERE username = ?', [felhasznalo], (err, eredmeny) => {
+
         if (err) {
             return res.render('pages/bejelentkezes', {
                 errorMessage: "Hiba történt a bejelentkezés során."
@@ -118,7 +113,6 @@ app.post('/login', (req, res) => {
         }
 
         const user = eredmeny[0];
-
         const jelszoEgyezik = bcrypt.compareSync(jelszo, user.password);
 
         if (!jelszoEgyezik) {
@@ -128,40 +122,43 @@ app.post('/login', (req, res) => {
         }
 
         req.session.user = user;
-        res.redirect("/"); // Sikeres bejelentkezéskor a főoldalra irányít
+        res.redirect("/");
     });
 });
 
-
-
-
-// Start
-app.listen(PORT, () => {
-    console.log(`Szerver fut: http://localhost:${PORT}`);
-});
-
+// --- MENÜ (PIZZÁK LISTÁZÁSA)
 app.get('/menu', (req, res) => {
-    res.render('pages/menu', { successMessage: null });
+    const sql = "SELECT id, name, category, vegetarian FROM pizzas";
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error("MySQL hiba:", err);
+            return res.send("Hiba történt a pizzák lekérésekor.");
+        }
+
+        res.render('pages/menu', {
+            pizzak: results,
+            successMessage: null
+        });
+    });
 });
 
-
-// Kapcsolat űrlap megjelenítése
+// --- KAPCSOLAT OLDAL ---
 app.get('/kapcsolat', (req, res) => {
-    res.render('pages/kapcsolat', { successMessage: null, errorMessage: null });
+    res.render('pages/kapcsolat', {
+        successMessage: null,
+        errorMessage: null
+    });
 });
 
-
-
-// Kapcsolat POST
+// --- KAPCSOLAT POST ---
 app.post('/kapcsolat', (req, res) => {
-    console.log("POST /kapcsolat megérkezett:", req.body);
-
     const { nev, email, uzenet } = req.body;
-    const sql = "INSERT INTO contacts (name, email, message, created_at) VALUES (?, ?, ?, NOW())";
+    const sql =
+        "INSERT INTO contacts (name, email, message, created_at) VALUES (?, ?, ?, NOW())";
 
     db.query(sql, [nev, email, uzenet], (err) => {
         if (err) {
-            console.error("MySQL hiba:", err);
             return res.render('pages/kapcsolat', {
                 successMessage: null,
                 errorMessage: "Hiba történt az üzenet küldésekor."
@@ -175,16 +172,16 @@ app.post('/kapcsolat', (req, res) => {
     });
 });
 
-
-
-//admin
-
-
-
-// Üzenetek
+// --- ADMIN: ÜZENETEK ---
 app.get('/admin/messages', (req, res) => {
     db.query('SELECT * FROM contacts ORDER BY created_at DESC', (err, results) => {
         if (err) throw err;
+
         res.render('admin/messages', { messages: results });
     });
+});
+
+// --- SERVER INDÍTÁS ---
+app.listen(PORT, () => {
+    console.log(`Szerver fut: http://localhost:${PORT}`);
 });
