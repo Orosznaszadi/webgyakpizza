@@ -1,33 +1,19 @@
-<% if (successMessage) { %>
-    <div style="background:#d4edda; color:#155724; padding:15px; border-radius:5px; margin-bottom:20px;">
-        <%= successMessage %>  
-        <br>
-        <a href="/login" style="color:#155724; font-weight:bold;">Bejelentkezés →</a>
-    </div>
-<% } %>
-
-<% if (errorMessage) { %>
-    <div style="background:#f8d7da; color:#721c24; padding:15px; border-radius:5px; margin-bottom:20px;">
-        <%= errorMessage %>
-    </div>
-<% } %>
-
 <div class="section">
     <div class="container w-container">
 
-        <h1>Regisztráció</h1>
 
-        <form action="/register" method="POST">
-            <label>Felhasználónév:</label><br>
-            <input type="text" name="felhasznalo" required><br><br>
+    <h1>Regisztráció</h1>
 
-            <label>Jelszó:</label><br>
-            <input type="password" name="jelszo" required><br><br>
+    <form action="/register" method="POST">
+        <label>Felhasználónév:</label><br>
+        <input type="text" name="felhasznalo" required><br><br>
 
-            <button type="submit">Regisztráció</button>
-        </form>
+        <label>Jelszó:</label><br>
+        <input type="password" name="jelszo" required><br><br>
 
-        <a href="/login">Bejelentkezés</a>
+        <button type="submit">Regisztráció</button>
+    </form>
 
-    </div>
+    <a href="/bejelentkezes">Bejelentkezés</a>
+</div>
 </div>

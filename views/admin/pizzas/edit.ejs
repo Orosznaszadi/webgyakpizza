@@ -1,0 +1,78 @@
+<div class="container mt-5">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0"> Pizza szerkesztése</h4>
+        </div>
+
+        <div class="card-body">
+
+            <% if (error) { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <form action="/admin/pizzas/update/<%= pizza.id %>" method="POST">
+
+                <!-- Név -->
+                <div class="mb-3">
+                    <label class="form-label">Pizza neve</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            value="<%= pizza.name %>"
+                            required
+                    >
+                </div>
+
+                <!-- Kategória -->
+                <div class="mb-3">
+                    <label class="form-label">Kategória</label>
+                    <select class="form-select" name="category" required>
+                        <option value="apród" <%= pizza.category === 'apród' ? 'selected' : '' %>>Apród</option>
+                        <option value="főnemes" <%= pizza.category === 'főnemes' ? 'selected' : '' %>>Főnemes</option>
+                        <option value="király" <%= pizza.category === 'király' ? 'selected' : '' %>>Király</option>
+                        <option value="lovag" <%= pizza.category === 'lovag' ? 'selected' : '' %>>Lovag</option>
+                    </select>
+                </div>
+
+                <!-- Vegetáriánus -->
+                <div class="mb-3 form-check">
+                    <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="vegetarian"
+                            value="1"
+                            <%= pizza.vegetarian ? 'checked' : '' %>
+                    >
+                    <label class="form-check-label">Vegetáriánus</label>
+                </div>
+
+                <!-- Ár -->
+                <div class="mb-3">
+                    <label class="form-label">Ár (Ft)</label>
+                    <input
+                            type="number"
+                            class="form-control"
+                            name="price"
+                            value="<%= pizza.price %>"
+                            required
+                    >
+                </div>
+
+
+
+                <button type="submit" class="btn btn-success mt-3">
+                     Módosítás mentése
+                </button>
+
+                <a href="/admin/pizzas" class="btn btn-secondary mt-3 ms-2">
+                    Vissza a listához
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

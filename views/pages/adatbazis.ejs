@@ -1,0 +1,55 @@
+<h2>Adatbázis táblák</h2>
+
+<hr>
+
+<h3>Pizzák</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Név</th>
+        <th>Kategória</th>
+        <th>Vegetáriánus</th>
+    </tr>
+    <% pizzak.forEach(p => { %>
+    <tr>
+        <td><%= p.nev %></td>
+        <td><%= p.kategorianev %></td>
+        <td><%= p.vegetarianus ? "Igen" : "Nem" %></td>
+    </tr>
+    <% }); %>
+</table>
+
+<hr>
+
+<h3>Kategóriák</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Név</th>
+        <th>Ár</th>
+    </tr>
+    <% kategoriak.forEach(k => { %>
+    <tr>
+        <td><%= k.nev %></td>
+        <td><%= k.ar %> Ft</td>
+    </tr>
+    <% }); %>
+</table>
+
+<hr>
+
+<h3>Rendelések</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Pizza</th>
+        <th>Darab</th>
+        <th>Felvétel</th>
+        <th>Kiszállítás</th>
+    </tr>
+    <% rendelesek.forEach(r => { %>
+    <tr>
+        <td><%= r.pizzanev %></td>
+        <td><%= r.darab %></td>
+        <td><%= r.felvetel %></td>
+        <td><%= r.kiszallitas %></td>
+    </tr>
+    <% }); %>
+</table>

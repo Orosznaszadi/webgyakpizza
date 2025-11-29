@@ -1,0 +1,58 @@
+<div class="section">
+    <div class="container w-container">
+        <h1>Pizzák</h1>
+<a href="/admin/pizzas/create">Új pizza hozzáadása</a>
+        <div class="container mt-4">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Pizzák kezelése</h4>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Név</th>
+                            <th>Kategória</th>
+                            <th>Vega</th>
+                            <th>Ár</th>
+                            <th class="text-center">Műveletek</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <% pizzas.forEach(pizza => { %>
+                            <tr>
+                                <td><%= pizza.id %></td>
+                                <td><%= pizza.name %></td>
+                                <td><%= pizza.category %></td>
+                                <td><%= pizza.vegetarian == 1 ? 'vega' : '' %></td>
+
+                                <td><%= pizza.price %> Ft</td>
+                                <td class="text-center">
+
+                                    <a href="/admin/pizzas/edit/<%= pizza.id %>"
+                                       class="btn btn-warning btn-sm me-2">
+                                       ️ Szerkesztés
+                                    </a>
+
+                                    <a href="/admin/pizzas/delete/<%= pizza.id %>"
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Biztos törlöd?');">
+                                         Törlés
+                                    </a>
+
+                                </td>
+                            </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container mt-5">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"> Új pizza hozzáadása</h4>
+        </div>
+
+        <div class="card-body">
+
+            <% if (error) { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <form action="/admin/pizzas/create" method="POST">
+
+                <!-- Név -->
+                <div class="mb-3">
+                    <label class="form-label">Pizza neve</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            required
+                    >
+                </div>
+
+                <!-- Leírás -->
+                <!-- Kategória -->
+                <div class="mb-3">
+                    <label class="form-label">Kategória</label>
+                    <select class="form-select" name="category" required>
+                        <option value="apród" >Apród</option>
+                        <option value="főnemes">Főnemes</option>
+                        <option value="király" >Király</option>
+                        <option value="lovag" >Lovag</option>
+                    </select>
+                </div>
+
+                <!-- Vegetáriánus -->
+                <div class="mb-3 form-check">
+                    <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="vegetarian"
+                            value="1"
+
+                    >
+                    <label class="form-check-label">Vegetáriánus</label>
+                </div>
+
+                <!-- Ár -->
+                <div class="mb-3">
+                    <label class="form-label">Ár (Ft)</label>
+                    <input
+                            type="number"
+                            class="form-control"
+                            name="price"
+                            required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">
+                    Pizza hozzáadása
+                </button>
+
+                <a href="/admin/pizzas" class="btn btn-secondary mt-3 ms-2">
+                    Vissza a listához
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
