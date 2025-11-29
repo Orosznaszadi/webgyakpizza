@@ -2,90 +2,93 @@
 <div class="top-info-section">
     <div class="top-info-bar-container w-container">
         <div class="w-row">
+
             <div class="top-info-info-column-first w-col w-col-4">
                 <div class="top-info-info-text">
                     <img src="/assets/images/location.png" alt="Pizza Mester">
                     <strong>1234 Budapest, Pizza u. 123. </strong>
                 </div>
             </div>
+
             <div class="top-info-info-column-center w-col w-col-4">
                 <div class="top-info-info-text">
                     <img src="/assets/images/ph.png" alt="Pizza Mester">
                     &nbsp;<strong>INGYENES KISZÁLLÍTÁS 10.000 Ft felett</strong>
                 </div>
             </div>
+
             <div class="top-info-info-column-last w-col w-col-4">
                 <div class="top-info-info-text">
                     <strong>Közösségi oldalaink</strong>
-                    <a href="http://www.facebook.com"><img src="/assets/images/nav-facebook.svg" alt="Pizza Mester"></a>
-                    <a href="http://www.twitter.com"><img src="/assets/images/nav-twitter.svg" alt="Pizza Mester"></a>
+                    <a href="http://www.facebook.com">
+                        <img src="/assets/images/nav-facebook.svg" alt="Pizza Mester">
+                    </a>
+                    <a href="http://www.twitter.com">
+                        <img src="/assets/images/nav-twitter.svg" alt="Pizza Mester">
+                    </a>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 <!-- Top info bar ends -->
 
+
 <!-- Header begins -->
 <header class="header">
-    <div class="navbar w-nav" data-animation="default" data-collapse="medium" data-doc-height="1" data-duration="500" data-no-scroll="1">
+    <div class="navbar w-nav"
+         data-animation="default"
+         data-collapse="medium"
+         data-doc-height="1"
+         data-duration="500"
+         data-no-scroll="1">
+
         <div class="container w-container">
-            <!-- Mobile nav section begins -->
+
+            <!-- Mobile nav -->
             <div class="menu-button w-nav-button">
                 <div class="menu-icon w-icon-nav-menu"></div>
             </div>
-            <!-- Mobile nav section ends -->
 
-            <!-- Logo section begins -->
-            <a class="brand w-nav-brand" href="{{ url('/') }}">
+            <!-- Logo -->
+            <a class="brand w-nav-brand" href="/">
                 <img src="/assets/images/logo.png" alt="Pizza Mester">
             </a>
-            <!-- Logo section ends -->
 
-            <!-- Main navigation begins -->
+            <!-- Main navigation -->
             <nav class="nav-menu w-nav-menu">
 
                 <a class="main-link w-nav-link" href="/">Főoldal</a>
                 <a class="main-link w-nav-link" href="/menu">Menü</a>
-
                 <a class="main-link w-nav-link" href="/kapcsolat">Kapcsolat</a>
 
+                <% if (user) { %>
 
+                    <a class="main-link w-nav-link" href="/dashboard">dashboard</a>
 
-                <% if (user){ %>
-                <a class="main-link w-nav-link" href="/dashboard">dashboard</a>
-
-                    <% if (typeof admin !== undefined){ %>
+                    <% if (typeof admin !== undefined) { %>
                         <div class="dropdown">
                             <a class="main-link w-nav-link" href="#">Admin ▾</a>
+
                             <ul class="dropdown-menu">
                                 <li><a class="w-nav-link" href="/admin/pizzak">Pizzák</a></li>
-<li><a class="w-nav-link" href="/admin/messages">Üzenetek</a></li>
-<li><a class="w-nav-link" href="/admin/orders">Rendelések</a></li>
-
-
+                                <li><a class="w-nav-link" href="/admin/messages">Üzenetek</a></li>
+                                <li><a class="w-nav-link" href="/admin/orders">Rendelések</a></li>
                             </ul>
                         </div>
-                    <% }%>
+                    <% } %>
 
                     <a class="main-link w-nav-link" href="/logout">Kijelentkezés</a>
+
                 <% } else { %>
 
                     <a class="main-link w-nav-link" href="/login">Bejelentkezés</a>
                     <a class="main-link w-nav-link" href="/register">Regisztráció</a>
 
-                <% }%>
-
-
-
-
-
-
-
-
+                <% } %>
 
             </nav>
-            <!-- Main navigation ends -->
         </div>
     </div>
 </header>

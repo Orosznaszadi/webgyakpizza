@@ -180,6 +180,7 @@ app.get('/admin/messages', (req, res) => {
         res.render('admin/messages', { messages: results });
     });
 });
+
 // --- ADMIN: PIZZÁK LISTÁZÁSA ---
 app.get('/admin/pizzak', (req, res) => {
     const sql = `
@@ -195,6 +196,7 @@ app.get('/admin/pizzak', (req, res) => {
         res.render('admin/pizzak/index', { pizzak: results });
     });
 });
+
 // --- ADMIN: ÚJ PIZZA ŰRLAP ---
 app.get('/admin/pizzak/create', (req, res) => {
     db.query("SELECT * FROM kategoria", (err, kategoriak) => {
@@ -203,6 +205,7 @@ app.get('/admin/pizzak/create', (req, res) => {
         res.render('admin/pizzak/create', { kategoriak });
     });
 });
+
 // --- ADMIN: ÚJ PIZZA MENTÉSE ---
 app.post('/admin/pizzak', (req, res) => {
     const { name, kategoria_id } = req.body;
@@ -219,6 +222,7 @@ app.post('/admin/pizzak', (req, res) => {
         res.redirect('/admin/pizzak');
     });
 });
+
 // --- ADMIN: PIZZA SZERKESZTÉSE ---
 app.get('/admin/pizzak/edit/:id', (req, res) => {
     const id = req.params.id;
@@ -235,6 +239,7 @@ app.get('/admin/pizzak/edit/:id', (req, res) => {
         });
     });
 });
+
 // --- ADMIN: PIZZA FRISSÍTÉSE ---
 app.post('/admin/pizzak/update/:id', (req, res) => {
     const id = req.params.id;
@@ -253,6 +258,7 @@ app.post('/admin/pizzak/update/:id', (req, res) => {
         res.redirect('/admin/pizzak');
     });
 });
+
 // --- ADMIN: PIZZA TÖRLÉSE ---
 app.get('/admin/pizzak/delete/:id', (req, res) => {
     const id = req.params.id;
